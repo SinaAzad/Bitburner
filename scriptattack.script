@@ -1,0 +1,6 @@
+var destination = getHostname();
+files = ["H.script", "W.script", "G.script"];
+scp(files,"home",destination);
+run("H.script");
+run("W.script");
+run("G.script");
