@@ -1,0 +1,24 @@
+//csc current server cash
+//cmt Calculated money threshold
+//nmt New Money threshold
+//mt Money Threshold
+
+var server = getHostname();
+print ("connect and attacking the :" + server + " server." );
+var mt = getServerMaxMoney(server);
+var ma = getServerMoneyAvailable(server);
+var cmt = (ma * 5) / 100;
+var csc = ma;
+while (csc > cmt) {
+
+	hack(server);
+	csc = getServerMoneyAvailable(server);
+
+	print("CSC = ", csc, " and CMT = ", cmt);
+	print("__________________________________________________")
+
+
+};
+
+	print("CSC = ", csc, " and CMT = ", cmt);
+	print("___________THE SERVER IS OUT OF CASH._____________")
