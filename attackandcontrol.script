@@ -3,47 +3,39 @@
 //nmt New Money threshold
 //mt Money Threshold
 
-var server = "max-hardware";
+var server = args[0]
 var mt = getServerMaxMoney(server);
 var ma = getServerMoneyAvailable(server);
 var cmt = (ma * 75) / 100;
 var securitylvl = getServerSecurityLevel(server);
 var counter = 0;
 var csc = ma;
+var gcounter = 0;
 while (true) {
 
 	hack(server);
+	gcounter = gcounter + 1;
 	csc = getServerMoneyAvailable(server);
 	counter = counter + 1;
+	print("Statment result: True,");
+	print("CSC = ", csc, " and CMT = ", cmt);
+	print("__________________________________________________")
+
 	if (counter == 10) {
 		print("Weakening the server security status: Running...")
 		weaken(server);
 		print("Weakening the server security status: Completed.")
 		counter = 0;
 	}
-	if (csc > cmt) {
-		print("Statment result: True,");
-		print("CSC = ", csc, " and CMT = ", cmt);
-		print("__________________________________________________")
-	}
 
-	if (csc < cmt) {
-		print("Statment result: False, -------------------------- " + "CSC = ", csc, " and CMT = ", cmt);
-		print("Moving to Stablization Mode")
-		print("__________________________________________________")
-	}
-
-	if (csc < cmt) {
-
-		var gcounter = 1;
-		while (gcounter <= 10) {
-			print("__________________$$$$$$$$$$$$$$$_________________");
-			print("Growth  attempt: " + gcounter + " out of 10.");
-			grow(server);
-			gcounter = gcounter + 1;
-		}
+	if (gcounter == 5) {
+		print("__________________$$$$$$$$$$$$$$$_________________");
+		print("Growth  attempt.");
+		grow(server);
 		print("Growth  attempt: COMPLETED");
 		print("__________________$$$$$$$$$$$$$$$_________________");
-	};
+		gcounter = 0
+	}
 
-};
+
+}
