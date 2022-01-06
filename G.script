@@ -1,0 +1,7 @@
+var server = getHostname(); 
+while (true){
+
+grow(server);
+var ma = getServerMoneyAvailable(server);
+
+}
